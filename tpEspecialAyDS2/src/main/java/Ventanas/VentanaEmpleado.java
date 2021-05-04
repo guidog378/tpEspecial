@@ -23,8 +23,8 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import ControladorEmpleado.ControllerEmpleado;
-import ModeloEmpleado.Emisor;
-import ModeloEmpleado.Receptor;
+import ModeloSocket.Emisor;
+import ModeloSocket.Receptor;
 
 import javax.swing.JScrollPane;
 

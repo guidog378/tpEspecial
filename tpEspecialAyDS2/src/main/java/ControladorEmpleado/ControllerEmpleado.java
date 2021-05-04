@@ -3,8 +3,8 @@ package ControladorEmpleado;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import ModeloEmpleado.Emisor;
 import ModeloPaqueteInfo.FactoryPaquete;
+import ModeloSocket.Emisor;
 import Ventanas.VentanaEmpleado;
 
 public class ControllerEmpleado implements ActionListener{

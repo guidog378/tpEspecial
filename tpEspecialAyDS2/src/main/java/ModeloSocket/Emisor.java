@@ -1,4 +1,4 @@
-package ModeloEmpleado;
+package ModeloSocket;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
