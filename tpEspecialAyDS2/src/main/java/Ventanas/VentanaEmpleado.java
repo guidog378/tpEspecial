@@ -21,6 +21,11 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import ControladorEmpleado.ControllerEmpleado;
+import ModeloEmpleado.Emisor;
+import ModeloEmpleado.Receptor;
+
 import javax.swing.JScrollPane;
 
 public class VentanaEmpleado extends JFrame {
@@ -28,6 +33,9 @@ public class VentanaEmpleado extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTable table;
+	private JButton avanceCliente;
+	private JButton inicioAtencion;
+	private JButton finAtencion;
 
 	/**
 	 * Launch the application.
@@ -36,8 +44,16 @@ public class VentanaEmpleado extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaEmpleado frame = new VentanaEmpleado();
-					frame.setVisible(true);
+					VentanaEmpleado window = new VentanaEmpleado();
+					ControllerEmpleado controller = new ControllerEmpleado(window);
+					Receptor receptor = Receptor.getInstance();
+					Emisor emisor = Emisor.getInstance();
+					Thread miThreadReceptor = new Thread(receptor);
+					miThreadReceptor.start();
+					Thread miThreadEmisor = new Thread(emisor);
+					miThreadEmisor.start();   
+					window.setActionListener(controller);
+					window.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -65,24 +81,26 @@ public class VentanaEmpleado extends JFrame {
 		FlowLayout flowLayout = (FlowLayout) panel_1.getLayout();
 		panel.add(panel_1);
 		
-		JButton btnNewButton = new JButton("Avance cliente");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		panel_1.add(btnNewButton);
+		avanceCliente = new JButton("Avance cliente");
+		avanceCliente.setName("avanceCliente");
+		avanceCliente.setActionCommand("avanceCliente");
+		panel_1.add(avanceCliente);
 		
 		JPanel panel_2 = new JPanel();
 		panel.add(panel_2);
 		
-		JButton btnNewButton_1 = new JButton("Iniciar atencion");
-		panel_2.add(btnNewButton_1);
+		inicioAtencion = new JButton("Iniciar atencion");
+		inicioAtencion.setName("inicioAtencion");
+		inicioAtencion.setActionCommand("inicioAtencion");
+		panel_2.add(inicioAtencion);
 		
 		JPanel panel_3 = new JPanel();
 		panel.add(panel_3);
 		
-		JButton btnNewButton_2 = new JButton("Finalizar atencion");
-		panel_3.add(btnNewButton_2);
+		finAtencion = new JButton("Finalizar atencion");
+		finAtencion.setName("finAtencion");
+		finAtencion.setActionCommand("finAtencion");
+		panel_3.add(finAtencion);
 		
 		JPanel panel_5 = new JPanel();
 		contentPane.add(panel_5, BorderLayout.CENTER);
@@ -137,5 +155,10 @@ public class VentanaEmpleado extends JFrame {
 		));
 		scrollPane.setViewportView(table);
 	}
-
+	
+	private void setActionListener(ControllerEmpleado c) {
+		this.avanceCliente.addActionListener(c);
+		this.finAtencion.addActionListener(c);
+		this.inicioAtencion.addActionListener(c);
+	}
 }
