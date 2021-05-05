@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import ModeloEmpleado.Empleado;
 
-public class PaqueteProxCliente implements Paquete,Serializable{
+public class PaqueteAvance implements Paquete,Serializable{
     private final int idDispositivo = 1;
     private final int idOperacion = 1;
     private int box;

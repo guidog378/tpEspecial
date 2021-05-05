@@ -5,7 +5,7 @@ import java.util.Date;
 
 import ModeloPaqueteInfo.FactoryPaquete;
 import ModeloPaqueteInfo.Paquete;
-import ModeloPaqueteInfo.PaqueteProxCliente;
+import ModeloPaqueteInfo.PaqueteAvance;
 import ModeloPaqueteInfo.PaqueteTiempoAtencion;
 import ModeloSocket.Emisor;
 import ModeloUtil.Cronometro;
@@ -73,7 +73,7 @@ public class Empleado {
 	}
 	
 	public void avanceCliente() {
-		PaqueteProxCliente paquete =(PaqueteProxCliente)FactoryPaquete.getInstance(1);
+		PaqueteAvance paquete =(PaqueteAvance)FactoryPaquete.getInstance(1);
 		paquete.setBox(this.box);
 		this.enviarPaquete(paquete);
 	}
