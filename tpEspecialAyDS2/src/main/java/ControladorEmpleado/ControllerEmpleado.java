@@ -6,8 +6,8 @@ import java.awt.event.ActionListener;
 import ModeloEmpleado.Empleado;
 import ModeloPaqueteInfo.FactoryPaquete;
 import ModeloSocket.Emisor;
+import ModeloUtil.Cronometro;
 import Ventanas.VentanaEmpleado;
-import modeloUtil.Cronometro;
 
 public class ControllerEmpleado implements ActionListener{
     private VentanaEmpleado window;

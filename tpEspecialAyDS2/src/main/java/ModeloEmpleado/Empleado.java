@@ -8,8 +8,8 @@ import ModeloPaqueteInfo.Paquete;
 import ModeloPaqueteInfo.PaqueteProxCliente;
 import ModeloPaqueteInfo.PaqueteTiempoAtencion;
 import ModeloSocket.Emisor;
-import modeloUtil.Cronometro;
-import modeloUtil.TiempoAtencion;
+import ModeloUtil.Cronometro;
+import ModeloUtil.TiempoAtencion;
 
 public class Empleado {
 	  private static Empleado empleado = null;

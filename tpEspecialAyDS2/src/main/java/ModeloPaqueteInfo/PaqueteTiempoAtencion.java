@@ -3,7 +3,7 @@ package ModeloPaqueteInfo;
 import java.io.Serializable;
 import java.util.Date;
 
-import modeloUtil.TiempoAtencion;
+import ModeloUtil.TiempoAtencion;
 
 public class PaqueteTiempoAtencion implements Paquete,Serializable{
     private final int idDispositivo = 1;
