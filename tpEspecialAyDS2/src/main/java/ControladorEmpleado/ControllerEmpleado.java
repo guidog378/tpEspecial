@@ -18,12 +18,17 @@ public class ControllerEmpleado implements ActionListener{
 	
 	public void actionPerformed(ActionEvent evento) {
 		switch(evento.getActionCommand()) {
-		     case "avanceCliente":Empleado.getInstance().enviarPaquete(FactoryPaquete.getInstance(1));
+		     case "avanceCliente":this.window.getInicioAtencion().setEnabled(true);
+		    	                  Empleado.getInstance().avanceCliente();
 		    	                  break;
 		     case "inicioAtencion":Empleado.getInstance().iniciarAtencion();
+		                           this.window.getAvanceCliente().setEnabled(false);
+		                           this.window.getInicioAtencion().setEnabled(false);
+		                           this.window.getFinAtencion().setEnabled(true);
 		    	                   break;
 		     case "finAtencion":Empleado.getInstance().finalizarAtencion();
-		                        //Falta enviar el paquete.
+		                        this.window.getAvanceCliente().setEnabled(true);
+		                        this.window.getFinAtencion().setEnabled(false);
 		    	                break;
 	    }		
 	}

@@ -156,6 +156,18 @@ public class VentanaEmpleado extends JFrame {
 		scrollPane.setViewportView(table);
 	}
 	
+	public JButton getAvanceCliente() {
+		return avanceCliente;
+	}
+
+	public JButton getInicioAtencion() {
+		return inicioAtencion;
+	}
+
+	public JButton getFinAtencion() {
+		return finAtencion;
+	}
+
 	private void setActionListener(ControllerEmpleado c) {
 		this.avanceCliente.addActionListener(c);
 		this.finAtencion.addActionListener(c);

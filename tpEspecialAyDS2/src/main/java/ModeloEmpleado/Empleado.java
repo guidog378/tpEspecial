@@ -16,6 +16,8 @@ public class Empleado {
       private ArrayList<TiempoAtencion> timposAtencion;
       
       private Empleado() {
+    	  this.clientesEsperando = new ArrayList<String>();
+    	  this.timposAtencion = new ArrayList<TiempoAtencion>();
       }
       
       public static Empleado getInstance() {
@@ -66,11 +68,15 @@ public class Empleado {
 		this.agregarTiempoAtencion(time);
 	}
 	
+	public void avanceCliente() {
+		this.enviarPaquete(FactoryPaquete.getInstance(1));
+	}
+	
 	private void agregarTiempoAtencion(TiempoAtencion time) {
 		this.timposAtencion.add(time);
 	}
 	
-	public void enviarPaquete(Paquete paquete) {
+	private void enviarPaquete(Paquete paquete) {
 		Emisor.getInstance().setPaqueteAEnviar(paquete);
 	}
 }
