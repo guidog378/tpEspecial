@@ -1,4 +1,4 @@
-package ModeloEmpleado;
+package modeloUtil;
 
 public class Cronometro implements Runnable{
     private int hora, minutos, segundos;

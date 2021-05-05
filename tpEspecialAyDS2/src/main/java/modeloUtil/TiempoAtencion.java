@@ -1,9 +1,9 @@
-package ModeloEmpleado;
+package modeloUtil;
 
 import java.io.Serializable;
 
 public class TiempoAtencion implements Serializable{
-    private int horas,minutos,segundos;
+    private int horas,minutos,segundos,box;
      
 	public TiempoAtencion(int horas, int minutos, int segundos) {
 		this.horas = horas;

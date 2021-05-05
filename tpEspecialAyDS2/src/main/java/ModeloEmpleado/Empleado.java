@@ -8,6 +8,8 @@ import ModeloPaqueteInfo.Paquete;
 import ModeloPaqueteInfo.PaqueteProxCliente;
 import ModeloPaqueteInfo.PaqueteTiempoAtencion;
 import ModeloSocket.Emisor;
+import modeloUtil.Cronometro;
+import modeloUtil.TiempoAtencion;
 
 public class Empleado {
 	  private static Empleado empleado = null;
@@ -65,6 +67,7 @@ public class Empleado {
 		cronometro.setSegundos(0);	
 		PaqueteTiempoAtencion paquete = (PaqueteTiempoAtencion)FactoryPaquete.getInstance(2);
 		paquete.setTiempoAtencion(time);
+		paquete.setBox(this.box);
 		this.enviarPaquete(paquete);
 		this.agregarTiempoAtencion(time);
 	}

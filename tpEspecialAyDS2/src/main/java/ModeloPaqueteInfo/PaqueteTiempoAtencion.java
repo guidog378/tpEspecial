@@ -3,12 +3,13 @@ package ModeloPaqueteInfo;
 import java.io.Serializable;
 import java.util.Date;
 
-import ModeloEmpleado.TiempoAtencion;
+import modeloUtil.TiempoAtencion;
 
 public class PaqueteTiempoAtencion implements Paquete,Serializable{
     private final int idDispositivo = 1;
     private final int idOperacion = 2;
     private TiempoAtencion tiempoAtencion;
+    private int box;
     
 	public void setTiempoAtencion(TiempoAtencion tiempoAtencion) {
 		this.tiempoAtencion = tiempoAtencion;
@@ -26,5 +27,13 @@ public class PaqueteTiempoAtencion implements Paquete,Serializable{
 	@Override
 	public int getIdOperacion() {
 		return idOperacion;
+	}
+	
+	public int getBox() {
+		return this.box;
+	}
+	
+	public void setBox(int box) {
+		this.box = box;
 	}
 }

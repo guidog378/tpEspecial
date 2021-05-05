@@ -3,11 +3,11 @@ package ControladorEmpleado;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import ModeloEmpleado.Cronometro;
 import ModeloEmpleado.Empleado;
 import ModeloPaqueteInfo.FactoryPaquete;
 import ModeloSocket.Emisor;
 import Ventanas.VentanaEmpleado;
+import modeloUtil.Cronometro;
 
 public class ControllerEmpleado implements ActionListener{
     private VentanaEmpleado window;
