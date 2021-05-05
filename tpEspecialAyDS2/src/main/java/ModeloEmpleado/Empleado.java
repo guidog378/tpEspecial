@@ -5,6 +5,7 @@ import java.util.Date;
 
 import ModeloPaqueteInfo.FactoryPaquete;
 import ModeloPaqueteInfo.Paquete;
+import ModeloPaqueteInfo.PaqueteProxCliente;
 import ModeloPaqueteInfo.PaqueteTiempoAtencion;
 import ModeloSocket.Emisor;
 
@@ -69,7 +70,9 @@ public class Empleado {
 	}
 	
 	public void avanceCliente() {
-		this.enviarPaquete(FactoryPaquete.getInstance(1));
+		PaqueteProxCliente paquete =(PaqueteProxCliente)FactoryPaquete.getInstance(1);
+		paquete.setBox(this.box);
+		this.enviarPaquete(paquete);
 	}
 	
 	private void agregarTiempoAtencion(TiempoAtencion time) {
