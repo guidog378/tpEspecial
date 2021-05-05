@@ -3,6 +3,8 @@ package ControladorEmpleado;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import ModeloEmpleado.Cronometro;
+import ModeloEmpleado.Empleado;
 import ModeloPaqueteInfo.FactoryPaquete;
 import ModeloSocket.Emisor;
 import Ventanas.VentanaEmpleado;
@@ -16,11 +18,12 @@ public class ControllerEmpleado implements ActionListener{
 	
 	public void actionPerformed(ActionEvent evento) {
 		switch(evento.getActionCommand()) {
-		     case "avanceCliente":Emisor.getInstance().setPaqueteAEnviar(FactoryPaquete.getInstance(1));
+		     case "avanceCliente":Empleado.getInstance().enviarPaquete(FactoryPaquete.getInstance(1));
 		    	                  break;
-		     case "inicioAtencion":System.out.println("Estoy aca 2.");
+		     case "inicioAtencion":Empleado.getInstance().iniciarAtencion();
 		    	                   break;
-		     case "finAtencion":System.out.println("Estoy aca 3.");
+		     case "finAtencion":Empleado.getInstance().finalizarAtencion();
+		                        //Falta enviar el paquete.
 		    	                break;
 	    }		
 	}
