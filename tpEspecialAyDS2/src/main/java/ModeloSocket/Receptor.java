@@ -18,17 +18,18 @@ public class Receptor implements Runnable{
 	@Override
 	public void run() {
 		try {
-			ServerSocket sv = new ServerSocket(9999);
-			while(isAndandoVentana()) {
-				Socket socket = sv.accept();
-				ObjectInputStream fe = new ObjectInputStream(socket.getInputStream());
-				Paquete paquete = (Paquete)fe.readObject();
-				switch(paquete.getIdOperacion()) {
-				     //Aca adentro deberia obtener los paquetes desde el servidor que le paso al empleado.
-				}
-				fe.close();
+			Socket socket = new Socket("192.168.1.40",9999);
+			while(isAndandoVentana()) {	
+				 ObjectInputStream fe = new ObjectInputStream(socket.getInputStream());
+				 Paquete paquete = (Paquete)fe.readObject();
+				 if(paquete != null) {
+				     switch(paquete.getIdOperacion()) {
+				        //Aca adentro deberia obtener los paquetes desde el servidor que le paso al empleado.
+				     }
+				 }
+				 fe.close();
 			}
-			sv.close();
+			socket.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {

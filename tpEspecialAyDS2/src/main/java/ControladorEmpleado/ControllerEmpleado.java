@@ -6,9 +6,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import ModeloEmpleado.Empleado;
-import ModeloPaqueteInfo.FactoryPaquete;
-import ModeloSocket.Emisor;
-import ModeloUtil.Cronometro;
 import Ventanas.VentanaEmpleado;
 
 public class ControllerEmpleado implements ActionListener{
@@ -36,6 +33,16 @@ public class ControllerEmpleado implements ActionListener{
 		                        this.window.getAvanceCliente().setEnabled(true);
 		                        this.window.getFinAtencion().setEnabled(false);
 		    	                break;
+		     case "aceptarBox":try{
+		    	                   int box = Integer.valueOf(this.window.getBox().getText());
+		    	                   Empleado.getInstance().setBox(box);
+		    	                   this.window.getAvanceCliente().setEnabled(true);
+		    	                   this.window.getBox().setEditable(false);
+		    	                   this.window.getAceptar().setEnabled(false);
+		                       }catch(NumberFormatException e) {
+		                    	   JOptionPane.showMessageDialog(this.window, "Formato de box no valido,debe ser un numero.");
+		                       }
+		    	               
 	    }		
 	}
 

@@ -27,6 +27,7 @@ import ModeloSocket.Emisor;
 import ModeloSocket.Receptor;
 
 import javax.swing.JScrollPane;
+import javax.swing.border.EtchedBorder;
 
 public class VentanaEmpleado extends JFrame {
 
@@ -36,6 +37,8 @@ public class VentanaEmpleado extends JFrame {
 	private JButton avanceCliente;
 	private JButton inicioAtencion;
 	private JButton finAtencion;
+	private JTextField box;
+	private JButton aceptar;
 
 	/**
 	 * Launch the application.
@@ -47,10 +50,9 @@ public class VentanaEmpleado extends JFrame {
 					VentanaEmpleado window = new VentanaEmpleado();
 					ControllerEmpleado controller = new ControllerEmpleado(window);
 					Receptor receptor = Receptor.getInstance();
-					Emisor emisor = Emisor.getInstance();
 					Thread miThreadReceptor = new Thread(receptor);
-					miThreadReceptor.start();  
-					window.setActionListener(controller);
+					miThreadReceptor.start();
+           			window.setActionListener(controller);
 					window.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -64,14 +66,14 @@ public class VentanaEmpleado extends JFrame {
 	 */
 	public VentanaEmpleado() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 475, 315);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
-		panel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		contentPane.add(panel, BorderLayout.WEST);
 		panel.setLayout(new GridLayout(3, 1, 0, 0));
 		
@@ -82,6 +84,7 @@ public class VentanaEmpleado extends JFrame {
 		avanceCliente = new JButton("Avance cliente");
 		avanceCliente.setName("avanceCliente");
 		avanceCliente.setActionCommand("avanceCliente");
+		avanceCliente.setEnabled(false);
 		panel_1.add(avanceCliente);
 		
 		JPanel panel_2 = new JPanel();
@@ -90,6 +93,7 @@ public class VentanaEmpleado extends JFrame {
 		inicioAtencion = new JButton("Iniciar atencion");
 		inicioAtencion.setName("inicioAtencion");
 		inicioAtencion.setActionCommand("inicioAtencion");
+		inicioAtencion.setEnabled(false);
 		panel_2.add(inicioAtencion);
 		
 		JPanel panel_3 = new JPanel();
@@ -102,6 +106,7 @@ public class VentanaEmpleado extends JFrame {
 		panel_3.add(finAtencion);
 		
 		JPanel panel_5 = new JPanel();
+		panel_5.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		contentPane.add(panel_5, BorderLayout.CENTER);
 		panel_5.setLayout(new BorderLayout(0, 0));
 		
@@ -153,6 +158,23 @@ public class VentanaEmpleado extends JFrame {
 			}
 		));
 		scrollPane.setViewportView(table);
+		
+		JPanel panel_6 = new JPanel();
+		panel_6.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		FlowLayout flowLayout_1 = (FlowLayout) panel_6.getLayout();
+		flowLayout_1.setAlignment(FlowLayout.LEFT);
+		contentPane.add(panel_6, BorderLayout.NORTH);
+		
+		JLabel lblNewLabel_1 = new JLabel("Box:");
+		panel_6.add(lblNewLabel_1);
+		
+		box = new JTextField();
+		panel_6.add(box);
+		box.setColumns(10);
+		
+		aceptar = new JButton("Aceptar");
+		aceptar.setActionCommand("aceptarBox");
+		panel_6.add(aceptar);
 	}
 	
 	public JButton getAvanceCliente() {
@@ -167,9 +189,18 @@ public class VentanaEmpleado extends JFrame {
 		return finAtencion;
 	}
 
+	public JTextField getBox() {
+		return box;
+	}
+	
+	public JButton getAceptar() {
+		return aceptar;
+	}
+
 	private void setActionListener(ControllerEmpleado c) {
 		this.avanceCliente.addActionListener(c);
 		this.finAtencion.addActionListener(c);
 		this.inicioAtencion.addActionListener(c);
+		this.aceptar.addActionListener(c);
 	}
 }
