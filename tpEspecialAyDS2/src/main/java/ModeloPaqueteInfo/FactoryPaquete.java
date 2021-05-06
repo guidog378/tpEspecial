@@ -4,7 +4,7 @@ public class FactoryPaquete {
      public static Paquete getInstance(int tipo) {
     	 Paquete paquete;
     	 if(tipo == 1)
-    		 paquete = new PaqueteAvance();
+    		 paquete = new PaqueteAvanceCliente();
     	 else
     		 paquete = new PaqueteTiempoAtencion();
 		return paquete;

@@ -8,7 +8,7 @@ import java.util.Queue;
 
 import ModeloPaqueteInfo.FactoryPaquete;
 import ModeloPaqueteInfo.Paquete;
-import ModeloPaqueteInfo.PaqueteAvance;
+import ModeloPaqueteInfo.PaqueteAvanceCliente;
 import ModeloPaqueteInfo.PaqueteTiempoAtencion;
 import ModeloSocket.Emisor;
 import ModeloUtil.Cronometro;
@@ -68,7 +68,7 @@ public class Empleado {
 	}
 	
 	public void avanceCliente(){
-		PaqueteAvance paquete =(PaqueteAvance)FactoryPaquete.getInstance(1);
+		PaqueteAvanceCliente paquete =(PaqueteAvanceCliente)FactoryPaquete.getInstance(1);
 		paquete.setDni(this.clientesEsperando.remove());
 		paquete.setBox(this.box);
 		this.enviarPaquete(paquete);
