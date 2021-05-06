@@ -6,7 +6,6 @@ import java.util.Date;
 import ModeloUtil.TiempoAtencion;
 
 public class PaqueteTiempoAtencion implements Paquete,Serializable{
-    private final int idDispositivo = 1;
     private final int idOperacion = 2;
     private TiempoAtencion tiempoAtencion;
     private int box;
@@ -17,11 +16,6 @@ public class PaqueteTiempoAtencion implements Paquete,Serializable{
 
 	public TiempoAtencion getTiempoAtencion() {
 		return tiempoAtencion;
-	}
-
-	@Override
-	public int getIdDispositivo() {
-		return idDispositivo;
 	}
 	
 	@Override

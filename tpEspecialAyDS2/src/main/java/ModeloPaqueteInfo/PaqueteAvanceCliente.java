@@ -5,15 +5,9 @@ import java.io.Serializable;
 import ModeloEmpleado.Empleado;
 
 public class PaqueteAvanceCliente implements Paquete,Serializable{
-    private final int idDispositivo = 1;
     private final int idOperacion = 1;
     private int box;
     private String dni;
-	
-    @Override
-    public int getIdDispositivo() {
-		return idDispositivo;
-	}
 	
     @Override
     public int getIdOperacion() {
