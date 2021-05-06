@@ -2,6 +2,9 @@ package ModeloEmpleado;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.NoSuchElementException;
+import java.util.Queue;
 
 import ModeloPaqueteInfo.FactoryPaquete;
 import ModeloPaqueteInfo.Paquete;
@@ -12,22 +15,22 @@ import ModeloUtil.Cronometro;
 import ModeloUtil.TiempoAtencion;
 
 public class Empleado {
-	  private static Empleado empleado = null;
-      private int box;
-      //Nuevos agregar al modelo de dominio.
-      private ArrayList<String> clientesEsperando;
-      private ArrayList<TiempoAtencion> timposAtencion;
+	private static Empleado empleado = null;
+    private int box;
+    //Nuevos agregar al modelo de dominio.
+    private Queue<String> clientesEsperando;
+    private ArrayList<TiempoAtencion> timposAtencion;
       
-      private Empleado() {
-    	  this.clientesEsperando = new ArrayList<String>();
-    	  this.timposAtencion = new ArrayList<TiempoAtencion>();
-      }
+    private Empleado() {
+    	this.clientesEsperando = new LinkedList<String>();
+    	this.timposAtencion = new ArrayList<TiempoAtencion>();
+    }
       
-      public static Empleado getInstance() {
-    	  if(Empleado.empleado == null)
-    		  Empleado.empleado = new Empleado();
-    	  return Empleado.empleado;
-      }
+    public static Empleado getInstance() {
+    	if(Empleado.empleado == null)
+    	     Empleado.empleado = new Empleado();
+    	return Empleado.empleado;
+    }
 
 	public int getBox() {
 		return box;
@@ -35,14 +38,6 @@ public class Empleado {
 
 	public void setBox(int box) {
 		this.box = box;
-	}
-
-	public ArrayList<String> getClientesEsperando() {
-		return clientesEsperando;
-	}
-
-	public void setClientesEsperando(ArrayList<String> clientesEsperando) {
-		this.clientesEsperando = clientesEsperando;
 	}
 
 	public ArrayList<TiempoAtencion> getTimposAtencion() {
@@ -72,8 +67,9 @@ public class Empleado {
 		this.agregarTiempoAtencion(time);
 	}
 	
-	public void avanceCliente() {
+	public void avanceCliente(){
 		PaqueteAvance paquete =(PaqueteAvance)FactoryPaquete.getInstance(1);
+		paquete.setDni(this.clientesEsperando.remove());
 		paquete.setBox(this.box);
 		this.enviarPaquete(paquete);
 	}
@@ -84,5 +80,13 @@ public class Empleado {
 	
 	private void enviarPaquete(Paquete paquete) {
 		Emisor.getInstance().setPaqueteAEnviar(paquete);
+	}
+	
+	public boolean isColaVacia() {
+		return this.clientesEsperando.isEmpty();
+	}
+	
+	public void agregarCliente(String cliente) {
+		this.clientesEsperando.add(cliente);
 	}
 }

@@ -100,6 +100,7 @@ public class VentanaEmpleado extends JFrame {
 		finAtencion = new JButton("Finalizar atencion");
 		finAtencion.setName("finAtencion");
 		finAtencion.setActionCommand("finAtencion");
+		finAtencion.setEnabled(false);
 		panel_3.add(finAtencion);
 		
 		JPanel panel_5 = new JPanel();

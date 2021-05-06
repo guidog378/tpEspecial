@@ -3,6 +3,8 @@ package ControladorEmpleado;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
+
 import ModeloEmpleado.Empleado;
 import ModeloPaqueteInfo.FactoryPaquete;
 import ModeloSocket.Emisor;
@@ -18,8 +20,12 @@ public class ControllerEmpleado implements ActionListener{
 	
 	public void actionPerformed(ActionEvent evento) {
 		switch(evento.getActionCommand()) {
-		     case "avanceCliente":this.window.getInicioAtencion().setEnabled(true);
-		    	                  Empleado.getInstance().avanceCliente();
+		     case "avanceCliente":if(!Empleado.getInstance().isColaVacia()) {
+		    	                      this.window.getInicioAtencion().setEnabled(true);
+		    	                      Empleado.getInstance().avanceCliente();       
+		                          }else {
+		                        	  JOptionPane.showMessageDialog(this.window, "No hay clientes esperando.");
+		                          }
 		    	                  break;
 		     case "inicioAtencion":Empleado.getInstance().iniciarAtencion();
 		                           this.window.getAvanceCliente().setEnabled(false);

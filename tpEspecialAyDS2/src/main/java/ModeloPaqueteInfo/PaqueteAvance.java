@@ -8,6 +8,7 @@ public class PaqueteAvance implements Paquete,Serializable{
     private final int idDispositivo = 1;
     private final int idOperacion = 1;
     private int box;
+    private String dni;
 	
     @Override
     public int getIdDispositivo() {
@@ -25,5 +26,13 @@ public class PaqueteAvance implements Paquete,Serializable{
 	
 	public void setBox(int box) {
 		this.box = box;
+	}
+
+	public String getDni() {
+		return dni;
+	}
+
+	public void setDni(String dni) {
+		this.dni = dni;
 	}
 }
