@@ -49,9 +49,7 @@ public class VentanaEmpleado extends JFrame {
 					Receptor receptor = Receptor.getInstance();
 					Emisor emisor = Emisor.getInstance();
 					Thread miThreadReceptor = new Thread(receptor);
-					miThreadReceptor.start();
-					Thread miThreadEmisor = new Thread(emisor);
-					miThreadEmisor.start();   
+					miThreadReceptor.start();  
 					window.setActionListener(controller);
 					window.setVisible(true);
 				} catch (Exception e) {

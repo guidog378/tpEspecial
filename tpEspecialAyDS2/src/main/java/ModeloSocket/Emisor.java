@@ -7,43 +7,24 @@ import java.net.UnknownHostException;
 
 import ModeloPaqueteInfo.Paquete;
 
-public class Emisor implements Runnable {
-	private Paquete paqueteAEnviar;
-	private boolean andando;
+public class Emisor{
 	private static Emisor speaker = null;
 	
 	private Emisor() {
-		this.paqueteAEnviar = null;
-		this.andando = true;
 	}
 
-	@Override
-	public void run() {
+	public void enviarPaquete(Paquete paquete) {
 		try {			
-			while(isAndandoVentana()) {		
-				Paquete paquete = this.getPaqueteAEnviar();
-				if(paquete != null) {
-					Socket socket = new Socket("192.168.1.40",9999);//Se debe poner la ip del servidor.
-		        	ObjectOutputStream fr = new ObjectOutputStream(socket.getOutputStream());
-				    fr.writeObject(paquete);
-				    this.setPaqueteAEnviar(null);
-				    fr.close();
-				    socket.close();
-		        }
-			}	
+			Socket socket = new Socket("192.168.1.40",9999);//Se debe poner la ip del servidor.
+		    ObjectOutputStream fr = new ObjectOutputStream(socket.getOutputStream());
+		    fr.writeObject(paquete);
+		    fr.close();
+	        socket.close();
 		} catch (UnknownHostException e) {
 				e.printStackTrace();
 		} catch (IOException e) {
 				e.printStackTrace();
 		}
-	}
-
-	public boolean isAndandoVentana() {
-		return andando;
-	}
-
-	public void setAndando(boolean andando) {
-		this.andando = andando;
 	}
 	
 	public static Emisor getInstance() {
@@ -51,13 +32,4 @@ public class Emisor implements Runnable {
 			Emisor.speaker = new Emisor();
 		return Emisor.speaker;
 	}
-
-	public synchronized Paquete getPaqueteAEnviar() {
-		return paqueteAEnviar;
-	}
-
-	public synchronized void setPaqueteAEnviar(Paquete paquete) {
-		this.paqueteAEnviar = paquete;
-	}
-	
 }

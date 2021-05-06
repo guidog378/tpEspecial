@@ -1,9 +1,7 @@
 package ModeloEmpleado;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.LinkedList;
-import java.util.NoSuchElementException;
 import java.util.Queue;
 
 import ModeloPaqueteInfo.FactoryPaquete;
@@ -24,6 +22,7 @@ public class Empleado {
     private Empleado() {
     	this.clientesEsperando = new LinkedList<String>();
     	this.timposAtencion = new ArrayList<TiempoAtencion>();
+    	this.clientesEsperando.add("Luisito");
     }
       
     public static Empleado getInstance() {
@@ -79,7 +78,7 @@ public class Empleado {
 	}
 	
 	private void enviarPaquete(Paquete paquete) {
-		Emisor.getInstance().setPaqueteAEnviar(paquete);
+		Emisor.getInstance().enviarPaquete(paquete);
 	}
 	
 	public boolean isColaVacia() {
