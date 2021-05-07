@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 import ModeloPaqueteInfo.FactoryPaquete;
-import ModeloPaqueteInfo.Paquete;
+import ModeloPaqueteInfo.IPaquete;
 import ModeloPaqueteInfo.PaqueteAvanceCliente;
 import ModeloPaqueteInfo.PaqueteTiempoAtencion;
 import ModeloSocket.Emisor;
@@ -77,7 +77,7 @@ public class Empleado {
 		this.timposAtencion.add(time);
 	}
 	
-	private void enviarPaquete(Paquete paquete) {
+	private void enviarPaquete(IPaquete paquete) {
 		Emisor.getInstance().enviarPaquete(paquete);
 	}
 	

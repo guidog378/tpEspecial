@@ -1,5 +1,5 @@
 package ModeloPaqueteInfo;
 
-public interface Paquete{
+public interface IPaquete{
 	public int getIdOperacion();
 }

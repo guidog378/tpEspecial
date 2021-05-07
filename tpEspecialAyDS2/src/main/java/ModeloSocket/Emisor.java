@@ -5,7 +5,7 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-import ModeloPaqueteInfo.Paquete;
+import ModeloPaqueteInfo.IPaquete;
 
 public class Emisor{
 	private static Emisor speaker = null;
@@ -13,7 +13,7 @@ public class Emisor{
 	private Emisor() {
 	}
 
-	public void enviarPaquete(Paquete paquete) {
+	public void enviarPaquete(IPaquete paquete) {
 		try {			
 			Socket socket = new Socket("192.168.1.40",9999);//Se debe poner la ip del servidor.
 		    ObjectOutputStream fr = new ObjectOutputStream(socket.getOutputStream());

@@ -1,8 +1,8 @@
 package ModeloPaqueteInfo;
 
 public class FactoryPaquete {
-     public static Paquete getInstance(int tipo) {
-    	 Paquete paquete;
+     public static IPaquete getInstance(int tipo) {
+    	 IPaquete paquete;
     	 if(tipo == 1)
     		 paquete = new PaqueteAvanceCliente();
     	 else

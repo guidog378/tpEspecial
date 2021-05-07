@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import ModeloEmpleado.Empleado;
 
-public class PaqueteAvanceCliente implements Paquete,Serializable{
+public class PaqueteAvanceCliente implements IPaquete,Serializable{
     private final int idOperacion = 1;
     private int box;
     private String dni;

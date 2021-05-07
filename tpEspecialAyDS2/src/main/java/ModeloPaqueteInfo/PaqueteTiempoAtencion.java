@@ -5,7 +5,7 @@ import java.util.Date;
 
 import ModeloUtil.TiempoAtencion;
 
-public class PaqueteTiempoAtencion implements Paquete,Serializable{
+public class PaqueteTiempoAtencion implements IPaquete,Serializable{
     private final int idOperacion = 2;
     private TiempoAtencion tiempoAtencion;
     private int box;

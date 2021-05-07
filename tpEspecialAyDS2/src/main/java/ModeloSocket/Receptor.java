@@ -5,7 +5,7 @@ import java.io.ObjectInputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import ModeloPaqueteInfo.Paquete;
+import ModeloPaqueteInfo.IPaquete;
 
 public class Receptor implements Runnable{
 	private boolean andando;
@@ -21,7 +21,7 @@ public class Receptor implements Runnable{
 			Socket socket = new Socket("192.168.1.40",9999);
 			while(isAndandoVentana()) {	
 				 ObjectInputStream fe = new ObjectInputStream(socket.getInputStream());
-				 Paquete paquete = (Paquete)fe.readObject();
+				 IPaquete paquete = (IPaquete)fe.readObject();
 				 if(paquete != null) {
 				     switch(paquete.getIdOperacion()) {
 				        //Aca adentro deberia obtener los paquetes desde el servidor que le paso al empleado.
