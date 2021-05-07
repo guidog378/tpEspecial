@@ -1,6 +1,8 @@
 package ModeloPaqueteInfo;
 
-public class PaqueteNuevoCliente implements IPaquete {
+import java.io.Serializable;
+
+public class PaqueteNuevoCliente implements IPaquete,Serializable {
     private final int idOperacion = 1;
     private int dni;
 
