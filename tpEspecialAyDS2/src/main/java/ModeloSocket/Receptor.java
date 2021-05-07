@@ -24,7 +24,10 @@ public class Receptor implements Runnable{
 				 IPaquete paquete = (IPaquete)fe.readObject();
 				 if(paquete != null) {
 				     switch(paquete.getIdOperacion()) {
-				          case 1:System.out.println("Tengo un nuevo cliente.");;
+				          case 1:System.out.println("Tengo un nuevo cliente.");
+				                 break;
+				          case 2:System.out.println("Tengo un nuevo tiempo de atencion.");
+				                 break;
 				     }
 				 }
 				 fe.close();

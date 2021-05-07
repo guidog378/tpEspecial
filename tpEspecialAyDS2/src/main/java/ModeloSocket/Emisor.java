@@ -15,7 +15,7 @@ public class Emisor{
 
 	public void enviarPaquete(IPaquete paquete) {
 		try {			
-			Socket socket = new Socket("192.168.1.40",9797);//Se debe poner la ip del servidor.
+			Socket socket = new Socket("192.168.1.40",9999);//Se debe poner la ip del servidor.
 		    ObjectOutputStream fr = new ObjectOutputStream(socket.getOutputStream());
 		    fr.writeObject(paquete);
 		    fr.close();
