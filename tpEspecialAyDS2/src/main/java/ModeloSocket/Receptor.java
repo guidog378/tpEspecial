@@ -24,7 +24,7 @@ public class Receptor implements Runnable{
 				 IPaquete paquete = (IPaquete)fe.readObject();
 				 if(paquete != null) {
 				     switch(paquete.getIdOperacion()) {
-				        //Aca adentro deberia obtener los paquetes desde el servidor que le paso al empleado.
+				          case 1:System.out.println("Tengo un nuevo cliente.");;
 				     }
 				 }
 				 fe.close();
