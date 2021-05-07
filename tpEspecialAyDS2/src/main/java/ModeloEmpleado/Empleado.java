@@ -16,13 +16,13 @@ public class Empleado {
 	private static Empleado empleado = null;
     private int box;
     //Nuevos agregar al modelo de dominio.
-    private Queue<String> clientesEsperando;
+    private Queue<Integer> clientesEsperando;
     private ArrayList<TiempoAtencion> timposAtencion;
       
     private Empleado() {
-    	this.clientesEsperando = new LinkedList<String>();
+    	this.clientesEsperando = new LinkedList<Integer>();
     	this.timposAtencion = new ArrayList<TiempoAtencion>();
-    	this.clientesEsperando.add("Luisito");
+    	this.clientesEsperando.add(40454948);
     }
       
     public static Empleado getInstance() {
@@ -85,7 +85,7 @@ public class Empleado {
 		return this.clientesEsperando.isEmpty();
 	}
 	
-	public void agregarCliente(String cliente) {
+	public void agregarCliente(int cliente) {
 		this.clientesEsperando.add(cliente);
 	}
 }

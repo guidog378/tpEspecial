@@ -5,7 +5,9 @@ import java.io.ObjectInputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import ModeloEmpleado.Empleado;
 import ModeloPaqueteInfo.IPaquete;
+import ModeloPaqueteInfo.PaqueteNuevoCliente;
 
 public class Receptor implements Runnable{
 	private boolean andando;
@@ -24,9 +26,8 @@ public class Receptor implements Runnable{
 				 IPaquete paquete = (IPaquete)fe.readObject();
 				 if(paquete != null) {
 				     switch(paquete.getIdOperacion()) {
-				          case 1:System.out.println("Tengo un nuevo cliente.");
-				                 break;
-				          case 2:System.out.println("Tengo un nuevo tiempo de atencion.");
+				          case 1:PaqueteNuevoCliente nuevoCliente = (PaqueteNuevoCliente)paquete;
+				                 Empleado.getInstance().agregarCliente(nuevoCliente.getDni());
 				                 break;
 				     }
 				 }

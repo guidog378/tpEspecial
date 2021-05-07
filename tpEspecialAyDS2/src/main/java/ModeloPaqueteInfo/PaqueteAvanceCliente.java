@@ -7,7 +7,7 @@ import ModeloEmpleado.Empleado;
 public class PaqueteAvanceCliente implements IPaquete,Serializable{
     private final int idOperacion = 1;
     private int box;
-    private String dni;
+    private int dni;
 	
     @Override
     public int getIdOperacion() {
@@ -22,11 +22,11 @@ public class PaqueteAvanceCliente implements IPaquete,Serializable{
 		this.box = box;
 	}
 
-	public String getDni() {
+	public int getDni() {
 		return dni;
 	}
 
-	public void setDni(String dni) {
+	public void setDni(int dni) {
 		this.dni = dni;
 	}
 }

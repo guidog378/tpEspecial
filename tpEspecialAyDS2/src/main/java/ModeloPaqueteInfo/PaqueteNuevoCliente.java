@@ -12,4 +12,8 @@ public class PaqueteNuevoCliente implements IPaquete {
     public int getIdOperacion() {
         return idOperacion;
     }
+    
+	public int getDni() {
+		return dni;
+	}
 }
