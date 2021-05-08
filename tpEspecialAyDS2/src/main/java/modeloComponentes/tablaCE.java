@@ -68,9 +68,12 @@ public class tablaCE implements TableModel {
 		
 	}
 	
-	public void agregaDni(int Dni) {
-	    System.out.println("Estoy aca.");
-		this.dniClientes.add(Dni);
+	public void agregaDni(Integer dni) {
+		this.dniClientes.add(dni);
+	}
+	
+	public void eliminarDNI(Integer dni) {
+		this.dniClientes.remove(dni);
 	}
 
 }

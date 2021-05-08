@@ -21,7 +21,9 @@ public class ControllerEmpleado implements ActionListener{
 		switch(evento.getActionCommand()) {
 		     case "avanceCliente":if(!Empleado.getInstance().isColaVacia()) {
 		    	                      this.window.getInicioAtencion().setEnabled(true);
-		    	                      this.clienteActual = Empleado.getInstance().avanceCliente();       
+		    	                      this.clienteActual = Empleado.getInstance().avanceCliente();
+		    	                      this.window.getModeloEspera().eliminarDNI((Integer)clienteActual);
+		    	                      this.window.getTablaClientesEsperando().repaint();
 		                          }else {
 		                        	  JOptionPane.showMessageDialog(this.window, "No hay clientes esperando.");
 		                          }
