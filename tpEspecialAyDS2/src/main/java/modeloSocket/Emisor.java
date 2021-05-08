@@ -16,7 +16,7 @@ public class Emisor {
 
 	public void enviarPaquete(IPaquete paquete) {
 		try {
-		    Socket socket = new Socket("localhost",9999);
+		    Socket socket = new Socket("localhost",9696);
 			OutputStream fr = socket.getOutputStream();
 		    ObjectOutputStream ofr = new ObjectOutputStream(fr);
 		    ofr.writeObject(paquete);
