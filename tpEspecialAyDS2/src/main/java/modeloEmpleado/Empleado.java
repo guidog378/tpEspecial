@@ -17,9 +17,11 @@ public class Empleado {
     private int box;
     //Nuevos agregar al modelo de dominio.
     private Queue<Integer> clientesEsperando;
+    private ArrayList<TiempoAtencion> tiemposDeAtencion;
       
     private Empleado() {
     	this.clientesEsperando = new LinkedList<Integer>();
+        this.tiemposDeAtencion = new ArrayList<TiempoAtencion>();
     	//Para probar.
     	this.clientesEsperando.add(40454948);
     	this.clientesEsperando.add(40454947);
@@ -45,18 +47,20 @@ public class Empleado {
 		new Thread(Cronometro.getInstance()).start();
 	}
 	
-	public TiempoAtencion finalizarAtencion() {
+	public void finalizarAtencion() {
 		Cronometro cronometro = Cronometro.getInstance();
 		cronometro.setAndando(false);
 		TiempoAtencion time = new TiempoAtencion(cronometro.getHora(),cronometro.getMinutos(),cronometro.getSegundos());
-		cronometro.setHora(0);
-		cronometro.setMinutos(0);
-		cronometro.setSegundos(0);	
+		this.tiemposDeAtencion.add(time);
+		cronometro.setHora(0);cronometro.setMinutos(0);cronometro.setSegundos(0);	
 		PaqueteTiempoAtencion paquete = (PaqueteTiempoAtencion)FactoryPaquete.getInstance(2);
 		paquete.setTiempoAtencion(time);
 		paquete.setBox(this.box);
 		this.enviarPaquete(paquete);
-        return time;
+	}
+	
+	public TiempoAtencion ultimoTiempo() {
+		return this.tiemposDeAtencion.get(this.tiemposDeAtencion.size()-1);
 	}
 	
 	public int avanceCliente(){
@@ -82,5 +86,25 @@ public class Empleado {
 
 	public Queue<Integer> getClientesEsperando() {
 		return clientesEsperando;
+	}
+	
+	public TiempoAtencion tiempoPromedio() {
+		double horas,min,seg,total;
+		int cantTiempos;
+		cantTiempos = this.tiemposDeAtencion.size();
+		horas=0;min=0;seg=0;
+		for(TiempoAtencion tp : this.tiemposDeAtencion) {
+			horas+=tp.getHoras();
+			min+=tp.getMinutos();
+			seg+=tp.getSegundos();
+		}
+		horas = horas*3600;
+		min = min*60;
+		total = (horas + min + seg)/cantTiempos;
+		horas = Math.floor(total/3600);
+		total = total - (horas*3600);
+		min = Math.floor(total/60);
+		seg = total - (min*60);
+		return new TiempoAtencion((int)horas,(int)min,(int)seg);
 	}
 }

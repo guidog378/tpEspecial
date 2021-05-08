@@ -31,8 +31,9 @@ public class ControllerEmpleado implements ActionListener{
 		                           this.window.getInicioAtencion().setEnabled(false);
 		                           this.window.getFinAtencion().setEnabled(true);
 		    	                   break;
-		     case "finAtencion":TiempoAtencion time = Empleado.getInstance().finalizarAtencion();
-		    	                this.window.getModeloTabla().agregaDniYTiempo(this.clienteActual, time);
+		     case "finAtencion":Empleado.getInstance().finalizarAtencion();
+		                        this.window.getPromedio().setText(Empleado.getInstance().tiempoPromedio().toString());
+		    	                this.window.getModeloTabla().agregaDniYTiempo(this.clienteActual, Empleado.getInstance().ultimoTiempo());
 		                        this.window.getTable().repaint();
 		                        this.window.getAvanceCliente().setEnabled(true);
 		                        this.window.getFinAtencion().setEnabled(false);

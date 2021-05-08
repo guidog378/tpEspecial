@@ -7,7 +7,7 @@ import javax.swing.table.TableModel;
 
 import modeloUtil.TiempoAtencion;
 
-public class tablaListarTiempoAtencion implements TableModel {
+public class tablaTiempoAtencion implements TableModel {
 
 	private ArrayList<TiempoAtencion> tiemposDeAtencion;
 	private ArrayList<Integer> dniClientes;
@@ -15,7 +15,7 @@ public class tablaListarTiempoAtencion implements TableModel {
 	private Class[] types;
 	private String[] columnName;
 	
-	public tablaListarTiempoAtencion() {
+	public tablaTiempoAtencion() {
 		this.tiemposDeAtencion = new ArrayList<TiempoAtencion>();
 		this.dniClientes = new ArrayList<Integer>();
 		this.types = new Class[2];
@@ -82,7 +82,6 @@ public class tablaListarTiempoAtencion implements TableModel {
 	}
 	
 	public void agregaDniYTiempo(int Dni,TiempoAtencion tiempo) {
-	    System.out.println("Estoy aca.");
 		this.dniClientes.add(Dni);
 		this.tiemposDeAtencion.add(tiempo);
 	}

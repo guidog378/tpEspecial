@@ -20,7 +20,7 @@ import javax.swing.JTable;
 
 import controladorEmpleado.ControllerEmpleado;
 import modeloComponentes.tablaCE;
-import modeloComponentes.tablaListarTiempoAtencion;
+import modeloComponentes.tablaTiempoAtencion;
 import modeloSocket.Receptor;
 
 import javax.swing.JScrollPane;
@@ -29,16 +29,16 @@ import javax.swing.border.EtchedBorder;
 public class VentanaEmpleado extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
 	private JTable table;
 	private JButton avanceCliente;
 	private JButton inicioAtencion;
 	private JButton finAtencion;
 	private JTextField box;
 	private JButton aceptar;
-	private tablaListarTiempoAtencion modeloTabla;
+	private tablaTiempoAtencion modeloTabla;
 	private JTable tablaClientesEsperando;
 	private tablaCE modeloEspera;
+	private JLabel promedio;
 
 	/**
 	 * Launch the application.
@@ -140,15 +140,13 @@ public class VentanaEmpleado extends JFrame {
 		JLabel lblNewLabel = new JLabel("Tiempo promedio:");
 		panel_4.add(lblNewLabel);
 		
-		textField = new JTextField();
-		textField.setEditable(false);
-		panel_4.add(textField);
-		textField.setColumns(10);
+		promedio = new JLabel("0");
+		panel_4.add(promedio);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		layeredPane_1.add(scrollPane, BorderLayout.CENTER);
 		
-		modeloTabla = new tablaListarTiempoAtencion();
+		modeloTabla = new tablaTiempoAtencion();
 		table = new JTable(modeloTabla);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);	
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -177,6 +175,7 @@ public class VentanaEmpleado extends JFrame {
 	public JButton getAvanceCliente() {
 		return avanceCliente;
 	}
+	
 
 	public JButton getInicioAtencion() {
 		return inicioAtencion;
@@ -194,7 +193,7 @@ public class VentanaEmpleado extends JFrame {
 		return aceptar;
 	}
 
-	public tablaListarTiempoAtencion getModeloTabla() {
+	public tablaTiempoAtencion getModeloTabla() {
 		return modeloTabla;
 	}
 
@@ -204,6 +203,10 @@ public class VentanaEmpleado extends JFrame {
 
 	public tablaCE getModeloEspera() {
 		return modeloEspera;
+	}
+
+	public JLabel getPromedio() {
+		return promedio;
 	}
 
 	private void setActionListener(ControllerEmpleado c) {
