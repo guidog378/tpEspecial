@@ -11,7 +11,7 @@ import ventana.VentanaEmpleado;
 
 public class ControllerEmpleado implements ActionListener{
     private VentanaEmpleado window;
-    private int clienteActual;
+    private Integer clienteActual;
     
     public ControllerEmpleado(VentanaEmpleado ventana) {
     	this.window = ventana;
@@ -22,7 +22,7 @@ public class ControllerEmpleado implements ActionListener{
 		     case "avanceCliente":if(!Empleado.getInstance().isColaVacia()) {
 		    	                      this.window.getInicioAtencion().setEnabled(true);
 		    	                      this.clienteActual = Empleado.getInstance().avanceCliente();
-		    	                      this.window.getModeloEspera().eliminarDNI((Integer)clienteActual);
+		    	                      this.window.getModeloEspera().eliminarDNI(clienteActual);
 		    	                      this.window.getTablaClientesEsperando().repaint();
 		                          }else {
 		                        	  JOptionPane.showMessageDialog(this.window, "No hay clientes esperando.");
