@@ -9,24 +9,18 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.SwingConstants;
 import javax.swing.JTabbedPane;
 import javax.swing.border.BevelBorder;
 import javax.swing.JLayeredPane;
-import javax.swing.JList;
-import javax.swing.AbstractListModel;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.JLabel;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 
 import controladorEmpleado.ControllerEmpleado;
+import modeloComponentes.tablaCE;
 import modeloComponentes.tablaListarTiempoAtencion;
-import modeloSocket.Emisor;
 import modeloSocket.Receptor;
 
 import javax.swing.JScrollPane;
@@ -43,6 +37,8 @@ public class VentanaEmpleado extends JFrame {
 	private JTextField box;
 	private JButton aceptar;
 	private tablaListarTiempoAtencion modeloTabla;
+	private JTable tablaClientesEsperando;
+	private tablaCE modeloEspera;
 
 	/**
 	 * Launch the application.
@@ -54,6 +50,7 @@ public class VentanaEmpleado extends JFrame {
 					VentanaEmpleado window = new VentanaEmpleado();
 					ControllerEmpleado controller = new ControllerEmpleado(window);
 					Receptor receptor = Receptor.getInstance();
+					receptor.setVentana(window);
 					Thread miThreadReceptor = new Thread(receptor);
 					miThreadReceptor.start();
            			window.setActionListener(controller);
@@ -122,17 +119,16 @@ public class VentanaEmpleado extends JFrame {
 		tabbedPane.addTab("Clientes en espera", null, layeredPane, null);
 		layeredPane.setLayout(new BorderLayout(0, 0));
 		
-		JList list = new JList();
-		list.setModel(new AbstractListModel() {
-			String[] values = new String[] {"DNI1", "DNI2", "DNI3", "DNI4", "DNI5"};
-			public int getSize() {
-				return values.length;
-			}
-			public Object getElementAt(int index) {
-				return values[index];
-			}
-		});
-		layeredPane.add(list, BorderLayout.CENTER);
+		JScrollPane scrollPane_1 = new JScrollPane();
+		layeredPane.add(scrollPane_1, BorderLayout.CENTER);
+		
+		modeloEspera = new tablaCE();
+		tablaClientesEsperando = new JTable(modeloEspera);
+		scrollPane_1.setViewportView(tablaClientesEsperando);
+		scrollPane_1.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane_1.setViewportView(tablaClientesEsperando);
+		scrollPane_1.setColumnHeaderView(tablaClientesEsperando.getTableHeader());
+		tablaClientesEsperando.setFillsViewportHeight(true);	
 		
 		JLayeredPane layeredPane_1 = new JLayeredPane();
 		tabbedPane.addTab("Tiempos de atencion", null, layeredPane_1, null);
@@ -204,6 +200,10 @@ public class VentanaEmpleado extends JFrame {
 
 	public JTable getTable() {
 		return table;
+	}
+
+	public tablaCE getModeloEspera() {
+		return modeloEspera;
 	}
 
 	private void setActionListener(ControllerEmpleado c) {

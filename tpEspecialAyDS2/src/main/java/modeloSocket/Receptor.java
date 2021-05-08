@@ -9,9 +9,11 @@ import java.net.Socket;
 import modeloEmpleado.Empleado;
 import modeloPaqueteInfo.IPaquete;
 import modeloPaqueteInfo.PaqueteNuevoCliente;
+import ventana.VentanaEmpleado;
 
 public class Receptor implements Runnable{
 	private static Receptor receptor = null;
+	private VentanaEmpleado window;
 	
 	@Override
 	public void run() {
@@ -23,8 +25,8 @@ public class Receptor implements Runnable{
 				IPaquete paquete = (IPaquete)fe.readObject();	
 				switch(paquete.getIdOperacion()) {
 				     case 1:PaqueteNuevoCliente nuevoCliente = (PaqueteNuevoCliente)paquete;
-				            System.out.println("Estoy aca2."+nuevoCliente.getDni());
 				            Empleado.getInstance().agregarCliente(nuevoCliente.getDni());
+				            this.window.getModeloEspera().agregaDni(nuevoCliente.getDni());
 				            break;
 				}
 	        }
@@ -40,5 +42,9 @@ public class Receptor implements Runnable{
 		if(Receptor.receptor == null)
 			Receptor.receptor = new Receptor();
 		return Receptor.receptor;
+	}
+	
+	public void setVentana(VentanaEmpleado window) {
+		this.window = window;
 	}
 }

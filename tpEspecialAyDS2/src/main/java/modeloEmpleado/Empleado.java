@@ -79,4 +79,8 @@ public class Empleado {
 	public void agregarCliente(int cliente) {
 		this.clientesEsperando.add(cliente);
 	}
+
+	public Queue<Integer> getClientesEsperando() {
+		return clientesEsperando;
+	}
 }
