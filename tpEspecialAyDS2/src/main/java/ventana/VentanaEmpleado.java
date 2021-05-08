@@ -18,11 +18,14 @@ import javax.swing.JLayeredPane;
 import javax.swing.JList;
 import javax.swing.AbstractListModel;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import controladorEmpleado.ControllerEmpleado;
+import modeloComponentes.tablaListarTiempoAtencion;
 import modeloSocket.Emisor;
 import modeloSocket.Receptor;
 
@@ -39,6 +42,7 @@ public class VentanaEmpleado extends JFrame {
 	private JButton finAtencion;
 	private JTextField box;
 	private JButton aceptar;
+	private tablaListarTiempoAtencion modeloTabla;
 
 	/**
 	 * Launch the application.
@@ -148,16 +152,13 @@ public class VentanaEmpleado extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		layeredPane_1.add(scrollPane, BorderLayout.CENTER);
 		
-		table = new JTable();
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{"40494914", "15:14"},
-			},
-			new String[] {
-				"DNI Cliente", "Tiempo de atencion"
-			}
-		));
+		modeloTabla = new tablaListarTiempoAtencion();
+		table = new JTable(modeloTabla);
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);	
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane.setViewportView(table);
+		scrollPane.setColumnHeaderView(table.getTableHeader());
+		table.setFillsViewportHeight(true);	
 		
 		JPanel panel_6 = new JPanel();
 		panel_6.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
@@ -195,6 +196,14 @@ public class VentanaEmpleado extends JFrame {
 	
 	public JButton getAceptar() {
 		return aceptar;
+	}
+
+	public tablaListarTiempoAtencion getModeloTabla() {
+		return modeloTabla;
+	}
+
+	public JTable getTable() {
+		return table;
 	}
 
 	private void setActionListener(ControllerEmpleado c) {

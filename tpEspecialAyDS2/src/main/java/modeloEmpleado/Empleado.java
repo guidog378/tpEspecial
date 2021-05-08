@@ -17,11 +17,9 @@ public class Empleado {
     private int box;
     //Nuevos agregar al modelo de dominio.
     private Queue<Integer> clientesEsperando;
-    private ArrayList<TiempoAtencion> timposAtencion;
       
     private Empleado() {
     	this.clientesEsperando = new LinkedList<Integer>();
-    	this.timposAtencion = new ArrayList<TiempoAtencion>();
     	//Para probar.
     	this.clientesEsperando.add(40454948);
     	this.clientesEsperando.add(40454947);
@@ -41,21 +39,13 @@ public class Empleado {
 	public void setBox(int box) {
 		this.box = box;
 	}
-
-	public ArrayList<TiempoAtencion> getTimposAtencion() {
-		return timposAtencion;
-	}
-
-	public void setTimposAtencion(ArrayList<TiempoAtencion> timposAtencion) {
-		this.timposAtencion = timposAtencion;
-	}
 	
 	public void iniciarAtencion() {
 		Cronometro.getInstance().setAndando(true);
 		new Thread(Cronometro.getInstance()).start();
 	}
 	
-	public void finalizarAtencion() {
+	public TiempoAtencion finalizarAtencion() {
 		Cronometro cronometro = Cronometro.getInstance();
 		cronometro.setAndando(false);
 		TiempoAtencion time = new TiempoAtencion(cronometro.getHora(),cronometro.getMinutos(),cronometro.getSegundos());
@@ -66,18 +56,16 @@ public class Empleado {
 		paquete.setTiempoAtencion(time);
 		paquete.setBox(this.box);
 		this.enviarPaquete(paquete);
-		this.agregarTiempoAtencion(time);
+        return time;
 	}
 	
-	public void avanceCliente(){
+	public int avanceCliente(){
 		PaqueteProxCliente paquete =(PaqueteProxCliente)FactoryPaquete.getInstance(1);
-		paquete.setDNIcliente(this.clientesEsperando.remove());
+		int cliente = this.clientesEsperando.remove();
+		paquete.setDNIcliente(cliente);
 		paquete.setBox(this.box);
 		this.enviarPaquete(paquete);
-	}
-	
-	private void agregarTiempoAtencion(TiempoAtencion time) {
-		this.timposAtencion.add(time);
+		return cliente;
 	}
 	
 	private void enviarPaquete(IPaquete paquete) {
