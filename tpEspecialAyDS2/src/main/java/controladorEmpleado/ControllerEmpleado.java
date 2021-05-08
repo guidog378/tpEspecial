@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import modeloEmpleado.Empleado;
+import modeloUtil.TiempoAtencion;
 import ventana.VentanaEmpleado;
 
 public class ControllerEmpleado implements ActionListener{
@@ -30,7 +31,8 @@ public class ControllerEmpleado implements ActionListener{
 		                           this.window.getInicioAtencion().setEnabled(false);
 		                           this.window.getFinAtencion().setEnabled(true);
 		    	                   break;
-		     case "finAtencion":this.window.getModeloTabla().agregaDniYTiempo(this.clienteActual, Empleado.getInstance().finalizarAtencion());
+		     case "finAtencion":TiempoAtencion time = Empleado.getInstance().finalizarAtencion();
+		    	                this.window.getModeloTabla().agregaDniYTiempo(this.clienteActual, time);
 		                        this.window.getTable().repaint();
 		                        this.window.getAvanceCliente().setEnabled(true);
 		                        this.window.getFinAtencion().setEnabled(false);
