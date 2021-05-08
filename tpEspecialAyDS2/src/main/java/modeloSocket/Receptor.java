@@ -27,6 +27,7 @@ public class Receptor implements Runnable{
 				     case 1:PaqueteNuevoCliente nuevoCliente = (PaqueteNuevoCliente)paquete;
 				            Empleado.getInstance().agregarCliente(nuevoCliente.getDni());
 				            this.window.getModeloEspera().agregaDni(nuevoCliente.getDni());
+				            this.window.getTablaClientesEsperando().repaint();
 				            break;
 				}
 	        }

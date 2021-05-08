@@ -209,6 +209,10 @@ public class VentanaEmpleado extends JFrame {
 		return promedio;
 	}
 
+	public JTable getTablaClientesEsperando() {
+		return tablaClientesEsperando;
+	}
+
 	private void setActionListener(ControllerEmpleado c) {
 		this.avanceCliente.addActionListener(c);
 		this.finAtencion.addActionListener(c);
