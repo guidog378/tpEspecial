@@ -18,7 +18,7 @@ public class Receptor implements Runnable{
 	@Override
 	public void run() {
 		try {
-			ServerSocket sv = new ServerSocket(9998);
+			ServerSocket sv = new ServerSocket(9690);
 			while(true) {	
 				Socket socket = sv.accept();
 				ObjectInputStream fe= new ObjectInputStream(socket.getInputStream()); 
