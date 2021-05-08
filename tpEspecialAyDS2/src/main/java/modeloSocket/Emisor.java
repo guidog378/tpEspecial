@@ -2,23 +2,24 @@ package modeloSocket;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
 import modeloPaqueteInfo.IPaquete;
 
-public class Emisor{
+public class Emisor {
 	private static Emisor speaker = null;
 	
 	private Emisor() {
 	}
 
 	public void enviarPaquete(IPaquete paquete) {
-		try {			
-			Socket socket = new Socket("192.168.1.40",9999);//Se debe poner la ip del servidor.
-		    ObjectOutputStream fr = new ObjectOutputStream(socket.getOutputStream());
-		    fr.writeObject(paquete);
-		    fr.close();
+		try {
+		    Socket socket = new Socket("localhost",9999);
+			OutputStream fr = socket.getOutputStream();
+		    ObjectOutputStream ofr = new ObjectOutputStream(fr);
+		    ofr.writeObject(paquete);
 		} catch (UnknownHostException e) {
 				e.printStackTrace();
 		} catch (IOException e) {

@@ -22,7 +22,10 @@ public class Empleado {
     private Empleado() {
     	this.clientesEsperando = new LinkedList<Integer>();
     	this.timposAtencion = new ArrayList<TiempoAtencion>();
+    	//Para probar.
     	this.clientesEsperando.add(40454948);
+    	this.clientesEsperando.add(40454947);
+    	this.clientesEsperando.add(40454946);
     }
       
     public static Empleado getInstance() {

@@ -50,8 +50,8 @@ public class VentanaEmpleado extends JFrame {
 					VentanaEmpleado window = new VentanaEmpleado();
 					ControllerEmpleado controller = new ControllerEmpleado(window);
 					Receptor receptor = Receptor.getInstance();
-				/*	Thread miThreadReceptor = new Thread(receptor);
-					miThreadReceptor.start();*/
+					Thread miThreadReceptor = new Thread(receptor);
+					miThreadReceptor.start();
            			window.setActionListener(controller);
 					window.setVisible(true);
 				} catch (Exception e) {
