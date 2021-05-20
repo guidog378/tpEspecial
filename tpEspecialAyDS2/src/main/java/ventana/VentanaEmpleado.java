@@ -29,7 +29,7 @@ public class VentanaEmpleado extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
-	private JButton avanceCliente;
+	private JButton atenderCliente;
 	private JButton inicioAtencion;
 	private JButton finAtencion;
 	private JTextField box;
@@ -81,11 +81,11 @@ public class VentanaEmpleado extends JFrame {
 		FlowLayout flowLayout = (FlowLayout) panel_1.getLayout();
 		panel.add(panel_1);
 		
-		avanceCliente = new JButton("Avance cliente");
-		avanceCliente.setName("avanceCliente");
-		avanceCliente.setActionCommand("avanceCliente");
-		avanceCliente.setEnabled(false);
-		panel_1.add(avanceCliente);
+		atenderCliente = new JButton("Atender cliente");
+		atenderCliente.setName("avanceCliente");
+		atenderCliente.setActionCommand("avanceCliente");
+		atenderCliente.setEnabled(false);
+		panel_1.add(atenderCliente);
 		
 		JPanel panel_2 = new JPanel();
 		panel.add(panel_2);
@@ -172,7 +172,7 @@ public class VentanaEmpleado extends JFrame {
 	}
 	
 	public JButton getAvanceCliente() {
-		return avanceCliente;
+		return atenderCliente;
 	}
 	
 
@@ -213,7 +213,7 @@ public class VentanaEmpleado extends JFrame {
 	}
 
 	private void setActionListener(ControllerEmpleado c) {
-		this.avanceCliente.addActionListener(c);
+		this.atenderCliente.addActionListener(c);
 		this.finAtencion.addActionListener(c);
 		this.inicioAtencion.addActionListener(c);
 		this.aceptar.addActionListener(c);
