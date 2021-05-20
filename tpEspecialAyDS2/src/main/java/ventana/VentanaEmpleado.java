@@ -17,14 +17,13 @@ import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.JLabel;
 import javax.swing.JTable;
-
-import controladorEmpleado.ControllerEmpleado;
-import modeloComponentes.tablaCE;
-import modeloComponentes.tablaTiempoAtencion;
-import modeloSocket.Receptor;
-
 import javax.swing.JScrollPane;
 import javax.swing.border.EtchedBorder;
+
+import componentes.tablaCE;
+import componentes.tablaTiempoAtencion;
+import comunicacion.Receptor;
+import controlador.ControllerEmpleado;
 
 public class VentanaEmpleado extends JFrame {
 
