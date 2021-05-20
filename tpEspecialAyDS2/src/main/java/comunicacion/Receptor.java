@@ -7,8 +7,10 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 import informacionCompartida.Informable;
+import informacionCompartida.InfoClienteAtendido;
 import informacionCompartida.InfoNuevoCliente;
 import modelo.Empleado;
+import modelo.TiempoAtencion;
 import ventana.VentanaEmpleado;
 
 public class Receptor implements Runnable{
@@ -28,6 +30,13 @@ public class Receptor implements Runnable{
 				            this.window.getModeloEspera().agregaDni(nuevoCliente.getDni());
 				            this.window.getTablaClientesEsperando().repaint();
 				            break;
+				     case 2:InfoClienteAtendido clienteAtendido = (InfoClienteAtendido)paquete;
+				            this.window.getModeloEspera().eliminarDNI(clienteAtendido.getDni());
+				            this.window.getTablaClientesEsperando().repaint();
+				            this.window.getModeloTabla().agregaDni(clienteAtendido.getDni());
+				            this.window.getModeloTabla().agregaTiempo(new TiempoAtencion(0,0,0));
+				            this.window.getTable().repaint();
+				    	    break;
 				}
 	        }
 		} catch (IOException e) {

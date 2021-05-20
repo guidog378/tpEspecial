@@ -81,9 +81,12 @@ public class tablaTiempoAtencion implements TableModel {
 		
 	}
 	
-	public void agregaDniYTiempo(int Dni,TiempoAtencion tiempo) {
-		this.dniClientes.add(Dni);
-		this.tiemposDeAtencion.add(tiempo);
+	public void agregaTiempo(TiempoAtencion tiempo) {
+		this.tiemposDeAtencion.add(this.dniClientes.size()-1, tiempo);
+	}
+	
+	public void agregaDni(Integer dni) {
+		this.dniClientes.add(dni);
 	}
 
 }
