@@ -1,4 +1,4 @@
-package componentes;
+package componentesVista;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

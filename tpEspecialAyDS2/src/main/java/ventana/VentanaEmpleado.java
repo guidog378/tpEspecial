@@ -20,8 +20,8 @@ import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.border.EtchedBorder;
 
-import componentes.tablaCE;
-import componentes.tablaTiempoAtencion;
+import componentesVista.tablaCE;
+import componentesVista.tablaTiempoAtencion;
 import comunicacion.Receptor;
 import controlador.ControllerEmpleado;
 
