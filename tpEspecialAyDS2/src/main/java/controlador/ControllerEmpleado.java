@@ -18,9 +18,12 @@ public class ControllerEmpleado implements ActionListener{
 	
 	public void actionPerformed(ActionEvent evento) {
 		switch(evento.getActionCommand()) {
-		     case "avanceCliente":if(!this.window.getModeloEspera().isColaVacia()) {
+		     case "avanceCliente":Integer clienteAtendido = Empleado.getInstance().avanceCliente();	                       
+		    	                  if(clienteAtendido != -1) {  
 		    	                      this.window.getInicioAtencion().setEnabled(true);
-		    	                      Empleado.getInstance().avanceCliente();
+		    				          this.window.getModeloTabla().agregaDni(clienteAtendido);
+		    				          this.window.getModeloTabla().agregaTiempo(new TiempoAtencion(0,0,0));
+		    				          this.window.getTable().repaint();
 		                          }else {
 		                        	  JOptionPane.showMessageDialog(this.window, "No hay clientes esperando.");
 		                          }

@@ -7,7 +7,6 @@ import modelo.Empleado;
 public class InfoProxCliente implements Informable{
     private final int idOperacion = 1;
     private int box;
-    private int DNIcliente;
 	
     @Override
     public int getIdOperacion() {
@@ -20,13 +19,5 @@ public class InfoProxCliente implements Informable{
 	
 	public void setBox(int box) {
 		this.box = box;
-	}
-
-	public int getDNIcliente() {
-		return DNIcliente;
-	}
-
-	public void setDNIcliente(int DNIcliente) {
-		this.DNIcliente = DNIcliente;
 	}
 }

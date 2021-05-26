@@ -22,8 +22,8 @@ import javax.swing.border.EtchedBorder;
 
 import componentesVista.tablaCE;
 import componentesVista.tablaTiempoAtencion;
-import comunicacion.Receptor;
 import controlador.ControllerEmpleado;
+import modelo.EscuchaNuevosClientes;
 
 public class VentanaEmpleado extends JFrame {
 
@@ -48,10 +48,10 @@ public class VentanaEmpleado extends JFrame {
 				try {
 					VentanaEmpleado window = new VentanaEmpleado();
 					ControllerEmpleado controller = new ControllerEmpleado(window);
-					Receptor receptor = Receptor.getInstance();
-					receptor.setVentana(window);
-					Thread miThreadReceptor = new Thread(receptor);
-					miThreadReceptor.start();
+					EscuchaNuevosClientes escucha = new EscuchaNuevosClientes();
+					escucha.setVentana(window);
+					Thread miThreadEscucha = new Thread(escucha);
+					miThreadEscucha.start();
            			window.setActionListener(controller);
 					window.setVisible(true);
 				} catch (Exception e) {
@@ -155,9 +155,8 @@ public class VentanaEmpleado extends JFrame {
 		
 		JPanel panel_6 = new JPanel();
 		panel_6.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		FlowLayout flowLayout_1 = (FlowLayout) panel_6.getLayout();
-		flowLayout_1.setAlignment(FlowLayout.LEFT);
 		contentPane.add(panel_6, BorderLayout.NORTH);
+		panel_6.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
 		
 		JLabel lblNewLabel_1 = new JLabel("Box:");
 		panel_6.add(lblNewLabel_1);
@@ -167,8 +166,8 @@ public class VentanaEmpleado extends JFrame {
 		box.setColumns(10);
 		
 		aceptar = new JButton("Aceptar");
-		aceptar.setActionCommand("aceptarBox");
 		panel_6.add(aceptar);
+		aceptar.setActionCommand("aceptarBox");
 	}
 	
 	public JButton getAvanceCliente() {

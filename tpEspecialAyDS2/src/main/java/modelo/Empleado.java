@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import comunicacion.Emisor;
+import comunicacion.Conexion;
 import informacionCompartida.FactoryInformable;
+import informacionCompartida.InfoNuevoCliente;
 import informacionCompartida.Informable;
 import informacionCompartida.InfoProxCliente;
 import informacionCompartida.InfoTiempoAtencion;
@@ -14,10 +15,12 @@ public class Empleado {
 	private static Empleado empleado = null;
     private int box;
     //Nuevos agregar al modelo de dominio.
-    private ArrayList<TiempoAtencion> tiemposDeAtencion;
+    private ArrayList<TiempoAtencion> tiemposDeAtencion; 
+    private Conexion conexion;
       
     private Empleado() {
         this.tiemposDeAtencion = new ArrayList<TiempoAtencion>();
+        this.conexion = new Conexion();
     }
       
     public static Empleado getInstance() {
@@ -55,14 +58,20 @@ public class Empleado {
 		return this.tiemposDeAtencion.get(this.tiemposDeAtencion.size()-1);
 	}
 	
-	public void avanceCliente(){
-		InfoProxCliente paquete =(InfoProxCliente)FactoryInformable.getInstance(1);
-		paquete.setBox(this.box);
-		this.enviarPaquete(paquete);
+	public int avanceCliente(){
+		InfoProxCliente paqueteEnviado =(InfoProxCliente)FactoryInformable.getInstance(1);
+		paqueteEnviado.setBox(this.box);
+		this.enviarPaquete(paqueteEnviado);
+		InfoNuevoCliente cliente =(InfoNuevoCliente) this.recibirPaquete();
+		return cliente.getDni();
 	}
 	
 	private void enviarPaquete(Informable paquete) {
-		Emisor.getInstance().enviarPaquete(paquete);
+		this.conexion.enviarPaquete(paquete);
+	}
+	
+	private Informable recibirPaquete() {
+		return this.conexion.recibirPaquete();
 	}
 	
 	public TiempoAtencion tiempoPromedio() {

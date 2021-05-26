@@ -69,20 +69,8 @@ public class tablaCE implements TableModel {
 		
 	}
 	
-	public void agregaDni(Integer dni) {
-		this.dniClientes.addLast(dni);
-	}
-	
-	public void eliminarDNI(Integer dni) {
-		this.dniClientes.remove(dni);
-	}
-	
-	public boolean isColaVacia() {
-		return this.dniClientes.isEmpty();
-	}
-	
-	public int getPrimerCliente() {
-		return this.dniClientes.getFirst();
+	public void setDnis(LinkedList<Integer> dnis) {
+		this.dniClientes = dnis;
 	}
 
 }
