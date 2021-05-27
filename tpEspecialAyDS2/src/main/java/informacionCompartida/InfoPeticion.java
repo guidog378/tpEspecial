@@ -1,6 +1,6 @@
 package informacionCompartida;
 
-public class InfoPreguntaClientesEspera implements Informable {
+public class InfoPeticion implements Informable {
 
 	@Override
 	public int getIdOperacion() {

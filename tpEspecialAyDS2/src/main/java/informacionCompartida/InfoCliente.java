@@ -2,11 +2,11 @@ package informacionCompartida;
 
 import java.io.Serializable;
 
-public class InfoNuevoCliente implements Informable {
+public class InfoCliente implements Informable {
     private final int idOperacion = 1;
     private int dni;
 
-    public InfoNuevoCliente(int dni){
+    public InfoCliente(int dni){
         this.dni=dni;
     }
 

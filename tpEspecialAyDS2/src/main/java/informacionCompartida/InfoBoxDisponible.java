@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import modelo.Empleado;
 
-public class InfoProxCliente implements Informable{
+public class InfoBoxDisponible implements Informable{
     private final int idOperacion = 1;
     private int box;
 	

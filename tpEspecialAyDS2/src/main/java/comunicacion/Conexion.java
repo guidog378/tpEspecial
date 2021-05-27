@@ -9,7 +9,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 import informacionCompartida.InfoClienteAtendido;
-import informacionCompartida.InfoNuevoCliente;
+import informacionCompartida.InfoCliente;
 import informacionCompartida.Informable;
 import modelo.TiempoAtencion;
 import ventana.VentanaEmpleado;

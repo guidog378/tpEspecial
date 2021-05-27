@@ -2,7 +2,7 @@ package modelo;
 
 import comunicacion.Conexion;
 import informacionCompartida.InfoClientesEspera;
-import informacionCompartida.InfoPreguntaClientesEspera;
+import informacionCompartida.InfoPeticion;
 import ventana.VentanaEmpleado;
 
 public class EscuchaNuevosClientes implements Runnable {
@@ -18,7 +18,7 @@ public class EscuchaNuevosClientes implements Runnable {
 	public void run() {
 		try {
 			while(true) {
-			    this.conexion.enviarPaquete(new InfoPreguntaClientesEspera());
+			    this.conexion.enviarPaquete(new InfoPeticion());
 			    InfoClientesEspera clientesEspera = (InfoClientesEspera)this.conexion.recibirPaquete();
 			    this.window.getModeloEspera().setDnis(clientesEspera.getDnis());
 			    this.window.getTablaClientesEsperando().repaint();

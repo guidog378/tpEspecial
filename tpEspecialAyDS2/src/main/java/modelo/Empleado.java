@@ -6,9 +6,9 @@ import java.util.Queue;
 
 import comunicacion.Conexion;
 import informacionCompartida.FactoryInformable;
-import informacionCompartida.InfoNuevoCliente;
+import informacionCompartida.InfoCliente;
 import informacionCompartida.Informable;
-import informacionCompartida.InfoProxCliente;
+import informacionCompartida.InfoBoxDisponible;
 import informacionCompartida.InfoTiempoAtencion;
 
 public class Empleado {
@@ -59,10 +59,10 @@ public class Empleado {
 	}
 	
 	public int avanceCliente(){
-		InfoProxCliente paqueteEnviado =(InfoProxCliente)FactoryInformable.getInstance(1);
+		InfoBoxDisponible paqueteEnviado =(InfoBoxDisponible)FactoryInformable.getInstance(1);
 		paqueteEnviado.setBox(this.box);
 		this.enviarPaquete(paqueteEnviado);
-		InfoNuevoCliente cliente =(InfoNuevoCliente) this.recibirPaquete();
+		InfoCliente cliente =(InfoCliente) this.recibirPaquete();
 		return cliente.getDni();
 	}
 	
