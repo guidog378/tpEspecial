@@ -1,8 +1,8 @@
 package modelo;
 
 import comunicacion.Conexion;
-import informacionCompartida.InfoClientesEspera;
-import informacionCompartida.InfoPeticion;
+import modeloInfo.InfoClientesEspera;
+import modeloInfo.InfoPeticion;
 import ventana.VentanaEmpleado;
 
 public class EscuchaNuevosClientes implements Runnable {

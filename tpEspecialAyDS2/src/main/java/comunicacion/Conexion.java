@@ -8,7 +8,7 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-import informacionCompartida.Informable;
+import modeloInfo.Informable;
 
 public class Conexion {
 	private Socket socket;

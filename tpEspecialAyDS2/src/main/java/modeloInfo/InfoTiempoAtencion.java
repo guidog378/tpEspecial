@@ -1,4 +1,4 @@
-package informacionCompartida;
+package modeloInfo;
 
 import java.io.Serializable;
 import java.util.Date;

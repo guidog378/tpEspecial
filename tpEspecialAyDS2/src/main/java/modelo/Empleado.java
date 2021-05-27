@@ -5,11 +5,11 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 import comunicacion.Conexion;
-import informacionCompartida.FactoryInformable;
-import informacionCompartida.InfoCliente;
-import informacionCompartida.Informable;
-import informacionCompartida.InfoBoxDisponible;
-import informacionCompartida.InfoTiempoAtencion;
+import modeloInfo.FactoryInformable;
+import modeloInfo.InfoBoxDisponible;
+import modeloInfo.InfoCliente;
+import modeloInfo.InfoTiempoAtencion;
+import modeloInfo.Informable;
 
 public class Empleado {
 	private static Empleado empleado = null;

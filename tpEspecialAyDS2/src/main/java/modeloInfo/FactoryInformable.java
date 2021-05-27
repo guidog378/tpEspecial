@@ -1,4 +1,4 @@
-package informacionCompartida;
+package modeloInfo;
 
 public class FactoryInformable {
      public static Informable getInstance(int tipo) {

@@ -1,4 +1,4 @@
-package informacionCompartida;
+package modeloInfo;
 
 public class InfoClienteAtendido implements Informable {
 	private int dni;
