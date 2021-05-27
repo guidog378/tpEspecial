@@ -8,11 +8,7 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-import informacionCompartida.InfoClienteAtendido;
-import informacionCompartida.InfoCliente;
 import informacionCompartida.Informable;
-import modelo.TiempoAtencion;
-import ventana.VentanaEmpleado;
 
 public class Conexion {
 	private Socket socket;
