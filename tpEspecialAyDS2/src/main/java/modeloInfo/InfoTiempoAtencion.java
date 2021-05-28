@@ -1,9 +1,6 @@
 package modeloInfo;
 
-import java.io.Serializable;
-import java.util.Date;
-
-import modelo.TiempoAtencion;
+import modeloUtil.TiempoAtencion;
 
 public class InfoTiempoAtencion implements Informable{
     private final int idOperacion = 2;

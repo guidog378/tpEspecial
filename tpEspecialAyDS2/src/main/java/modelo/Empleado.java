@@ -10,6 +10,8 @@ import modeloInfo.InfoBoxDisponible;
 import modeloInfo.InfoCliente;
 import modeloInfo.InfoTiempoAtencion;
 import modeloInfo.Informable;
+import modeloUtil.Cronometro;
+import modeloUtil.TiempoAtencion;
 
 public class Empleado {
 	private static Empleado empleado = null;

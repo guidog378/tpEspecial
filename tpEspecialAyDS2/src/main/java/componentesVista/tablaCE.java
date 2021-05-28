@@ -1,6 +1,5 @@
 package componentesVista;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 import javax.swing.event.TableModelListener;

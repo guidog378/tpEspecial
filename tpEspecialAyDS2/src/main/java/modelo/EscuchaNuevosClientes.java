@@ -20,10 +20,8 @@ public class EscuchaNuevosClientes implements Runnable {
 			while(true) {
 			    this.conexion.enviarPaquete(new InfoPeticion());
 			    InfoClientesEspera clientesEspera = (InfoClientesEspera)this.conexion.recibirPaquete();
-			    if(clientesEspera != null) {
-			        this.window.getModeloEspera().setDnis(clientesEspera.getDnis());
-			        this.window.getTablaClientesEsperando().repaint();
-			    }
+			    this.window.getModeloEspera().setDnis(clientesEspera.getDnis());
+			    this.window.getTablaClientesEsperando().repaint();
 			    Thread.sleep(2000);
 			}
 		} catch (InterruptedException e) {

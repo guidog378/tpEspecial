@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
-import modelo.TiempoAtencion;
+import modeloUtil.TiempoAtencion;
 
 public class tablaTiempoAtencion implements TableModel {
 

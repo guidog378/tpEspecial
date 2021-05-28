@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import modelo.Empleado;
-import modelo.TiempoAtencion;
+import modeloUtil.TiempoAtencion;
 import ventana.VentanaEmpleado;
 
 public class ControllerEmpleado implements ActionListener{
