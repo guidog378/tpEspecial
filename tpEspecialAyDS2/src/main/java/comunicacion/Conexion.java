@@ -8,7 +8,7 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-import modeloInfo.InfoServer;
+import modeloInfo.InfoServerEmpleado;
 import modeloInfo.InfoServerFuncional;
 import modeloInfo.Informable;
 
@@ -54,7 +54,7 @@ public class Conexion {
 	
 	private void obtenerServidor() {
         try {
-        	InfoServer info = new InfoServer();
+        	InfoServerEmpleado info = new InfoServerEmpleado();
 			this.socket = new Socket(this.ipMonitor,this.puertoMonitor);
 			ObjectOutputStream oos = new ObjectOutputStream(this.socket.getOutputStream());
 			oos.writeObject(info);
@@ -65,7 +65,6 @@ public class Conexion {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

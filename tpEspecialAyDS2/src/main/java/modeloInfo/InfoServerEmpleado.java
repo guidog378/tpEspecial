@@ -1,6 +1,6 @@
 package modeloInfo;
 
-public class InfoServer implements Informable {
+public class InfoServerEmpleado implements Informable {
 	
 	@Override
 	public int getIdOperacion() {
