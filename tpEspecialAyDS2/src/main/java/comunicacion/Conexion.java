@@ -30,10 +30,11 @@ public class Conexion {
 		    ObjectOutputStream ofr = new ObjectOutputStream(fr);
 		    ofr.writeObject(paqueteEnviar);
 		} catch (UnknownHostException e) {
-				this.obtenerServidor();
-				this.enviarPaquete(paqueteEnviar);
+		    this.obtenerServidor();
+			this.enviarPaquete(paqueteEnviar);
 		} catch (IOException e) {
-				e.printStackTrace();
+			this.obtenerServidor();
+			this.enviarPaquete(paqueteEnviar);
 		}
 	}
 	
