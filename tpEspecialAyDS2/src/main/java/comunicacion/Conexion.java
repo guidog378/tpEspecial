@@ -19,7 +19,7 @@ public class Conexion {
 	
 	public Conexion() {
 		this.ipMonitor = "localhost";
-		this.puertoMonitor = 9090;
+		this.puertoMonitor = 9180;
 		this.obtenerServidor();
 	}
 
