@@ -1,6 +1,7 @@
 package modelo;
 
 import comunicacion.Conexion;
+import modeloInfo.FactoryInformable;
 import modeloInfo.InfoClientesEspera;
 import modeloInfo.InfoPeticion;
 import ventana.VentanaEmpleado;
@@ -18,7 +19,7 @@ public class EscuchaNuevosClientes implements Runnable {
 	public void run() {
 		try {
 			while(true) {
-			    this.conexion.enviarPaquete(new InfoPeticion());
+			    this.conexion.enviarPaquete(FactoryInformable.getInstance(3));
 			    InfoClientesEspera clientesEspera = (InfoClientesEspera)this.conexion.recibirPaquete();
 			    this.window.getModeloEspera().setDnis(clientesEspera.getDnis());
 			    this.window.getTablaClientesEsperando().repaint();

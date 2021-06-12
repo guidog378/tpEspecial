@@ -16,7 +16,6 @@ import modeloUtil.TiempoAtencion;
 public class Empleado {
 	private static Empleado empleado = null;
     private int box;
-    //Nuevos agregar al modelo de dominio.
     private ArrayList<TiempoAtencion> tiemposDeAtencion; 
     private Conexion conexion;
       
