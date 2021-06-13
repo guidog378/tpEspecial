@@ -42,7 +42,9 @@ public class Empleado {
 	
 	public void iniciarAtencion() {
 		Cronometro.getInstance().setAndando(true);
-		this.enviarPaquete(FactoryInformable.getInstance(4));
+		InfoInicioAtencion info = (InfoInicioAtencion) FactoryInformable.getInstance(4);
+		info.setBox(this.box);
+		this.enviarPaquete(info);
 		new Thread(Cronometro.getInstance()).start();
 	}
 	
