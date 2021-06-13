@@ -1,6 +1,7 @@
 package modelo;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -8,6 +9,7 @@ import comunicacion.Conexion;
 import modeloInfo.FactoryInformable;
 import modeloInfo.InfoBoxDisponible;
 import modeloInfo.InfoCliente;
+import modeloInfo.InfoInicioAtencion;
 import modeloInfo.InfoTiempoAtencion;
 import modeloInfo.Informable;
 import modeloUtil.Cronometro;
@@ -40,6 +42,7 @@ public class Empleado {
 	
 	public void iniciarAtencion() {
 		Cronometro.getInstance().setAndando(true);
+		this.enviarPaquete(FactoryInformable.getInstance(4));
 		new Thread(Cronometro.getInstance()).start();
 	}
 	

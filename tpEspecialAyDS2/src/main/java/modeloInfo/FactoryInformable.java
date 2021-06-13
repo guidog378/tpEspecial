@@ -11,6 +11,8 @@ public class FactoryInformable {
     	            break;
     	     case 3:paquete = new InfoPeticion();
     	            break;
+    	     case 4:paquete = new InfoInicioAtencion();
+    	            break;
     	 }
 		 return paquete;
      }
