@@ -18,7 +18,7 @@ public class ControllerEmpleado implements ActionListener{
 	
 	public void actionPerformed(ActionEvent evento) {
 		switch(evento.getActionCommand()) {
-		     case "avanceCliente":Integer clienteAtendido = Empleado.getInstance().avanceCliente();	                       
+		     case "avanceCliente":Integer clienteAtendido = Empleado.getInstance().avanceCliente();	 
 		    	                  if(clienteAtendido != -1) {  
 		    	                      this.window.getInicioAtencion().setEnabled(true);
 		    				          this.window.getModeloTabla().agregaDni(clienteAtendido);

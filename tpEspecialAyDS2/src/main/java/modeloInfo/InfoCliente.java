@@ -1,7 +1,6 @@
 package modeloInfo;
 
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 public class InfoCliente implements Informable {
     private final int idOperacion = 1;
@@ -34,4 +33,16 @@ public class InfoCliente implements Informable {
     public Date getFechaYHoraRegistro() {
         return fechaYHoraRegistro;
     }
+    
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public void setCategoria(int categoria) {
+		this.categoria = categoria;
+	}
+
+	public void setFechaYHoraRegistro(Date fechaYHoraRegistro) {
+		this.fechaYHoraRegistro = fechaYHoraRegistro;
+	}
 }
