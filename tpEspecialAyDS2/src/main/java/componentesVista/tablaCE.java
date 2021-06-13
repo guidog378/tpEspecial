@@ -1,5 +1,6 @@
 package componentesVista;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 import javax.swing.event.TableModelListener;
@@ -7,13 +8,13 @@ import javax.swing.table.TableModel;
 
 
 public class tablaCE implements TableModel {
-	private LinkedList<Integer> dniClientes;
+	private ArrayList<Integer> dniClientes;
 	
 	private Class[] types;
 	private String[] columnName;
 	
 	public tablaCE() {
-		this.dniClientes = new LinkedList<Integer>();
+		this.dniClientes = new ArrayList<Integer>();
 		this.types = new Class[1];
 		types[0] = java.lang.Integer.class;
 		this.columnName = new String[1];
@@ -68,7 +69,7 @@ public class tablaCE implements TableModel {
 		
 	}
 	
-	public void setDnis(LinkedList<Integer> dnis) {
+	public void setDnis(ArrayList<Integer> dnis) {
 		this.dniClientes = dnis;
 	}
 
