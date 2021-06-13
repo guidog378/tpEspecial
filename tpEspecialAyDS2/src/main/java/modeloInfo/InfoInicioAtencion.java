@@ -3,7 +3,7 @@ package modeloInfo;
 import java.util.Date;
 
 public class InfoInicioAtencion implements Informable {
-
+	
 	private Date fechaYHora;
 	
 	public InfoInicioAtencion() {
