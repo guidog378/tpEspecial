@@ -21,7 +21,7 @@ public class EscuchaNuevosClientes implements Runnable {
 			while(true) {
 			    this.conexion.enviarPaquete(FactoryInformable.getInstance(3));
 			    InfoClientesEspera clientesEspera = (InfoClientesEspera)this.conexion.recibirPaquete();
-			    this.window.getModeloEspera().setDnis(clientesEspera.getDnis());
+			    this.window.getModeloEspera().setClientes(clientesEspera.getClientes());
 			    this.window.getTablaClientesEsperando().repaint();
 			    Thread.sleep(2000);
 			}

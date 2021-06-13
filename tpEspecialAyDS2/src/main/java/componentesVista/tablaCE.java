@@ -6,19 +6,23 @@ import java.util.LinkedList;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
+import modeloInfo.InfoCliente;
+
 
 public class tablaCE implements TableModel {
-	private ArrayList<Integer> dniClientes;
+	private ArrayList<InfoCliente> clientes;
 	
 	private Class[] types;
 	private String[] columnName;
 	
 	public tablaCE() {
-		this.dniClientes = new ArrayList<Integer>();
-		this.types = new Class[1];
-		types[0] = java.lang.Integer.class;
-		this.columnName = new String[1];
+		this.clientes = new ArrayList<InfoCliente>();
+		this.types = new Class[2];
+		types[0] = String.class;
+		types[1] = String.class;
+		this.columnName = new String[2];
 		columnName[0] = "DNI Cliente";
+		columnName[1] = "Nombre Cliente";
 	}
 	
 	@Override
@@ -32,7 +36,7 @@ public class tablaCE implements TableModel {
 
 	@Override
 	public int getColumnCount() {
-		return 1;
+		return 2;
 	}
 
 	@Override
@@ -42,15 +46,18 @@ public class tablaCE implements TableModel {
 
 	@Override
 	public int getRowCount() {
-		return this.dniClientes.size();
+		return this.clientes.size();
 	}
 
 	@Override
 	public Object getValueAt(int fila, int columna) {
 		Object auxObj = null;
-		if(!this.dniClientes.isEmpty() && fila<this.dniClientes.size()) {
-			Integer dni = this.dniClientes.get(fila);
-		    auxObj = Integer.toString(dni);	
+		if(!this.clientes.isEmpty() && fila<this.clientes.size()) {
+			InfoCliente cliente = this.clientes.get(fila);
+			if(columna == 0)
+		        auxObj = Integer.toString(cliente.getDni());
+			else
+				auxObj = cliente.getNombre();
 		}
 		return auxObj;
 	}
@@ -66,11 +73,10 @@ public class tablaCE implements TableModel {
 
 	@Override
 	public void setValueAt(Object arg0, int arg1, int arg2) {
-		
 	}
 	
-	public void setDnis(ArrayList<Integer> dnis) {
-		this.dniClientes = dnis;
+	public void setClientes(ArrayList<InfoCliente> clientes) {
+		this.clientes = clientes;
 	}
 
 }
