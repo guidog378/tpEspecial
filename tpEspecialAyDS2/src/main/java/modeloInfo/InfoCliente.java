@@ -9,8 +9,9 @@ public class InfoCliente implements Informable {
     private int categoria=-1;
     private Date fechaYHoraRegistro=null;
 
-    public InfoCliente(int dni){
+    public InfoCliente(int dni, Date fechaYHoraRegistro){
         this.dni=dni;
+        this.fechaYHoraRegistro=fechaYHoraRegistro;
     }
 
     @Override
@@ -33,16 +34,12 @@ public class InfoCliente implements Informable {
     public Date getFechaYHoraRegistro() {
         return fechaYHoraRegistro;
     }
-    
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
 
-	public void setCategoria(int categoria) {
-		this.categoria = categoria;
-	}
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-	public void setFechaYHoraRegistro(Date fechaYHoraRegistro) {
-		this.fechaYHoraRegistro = fechaYHoraRegistro;
-	}
+    public void setCategoria(int categoria) {
+        this.categoria = categoria;
+    }
 }
